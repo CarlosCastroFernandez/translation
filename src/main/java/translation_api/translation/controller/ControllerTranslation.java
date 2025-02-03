@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.bind.annotation.*;
@@ -71,6 +72,10 @@ public class ControllerTranslation {
                     respuestaInfo = response.body();
                     respuestaInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respuestaInfo);
                     System.out.println(respuestaInfo);
+                    if (respuestaInfo.contains("Not Found")){
+                        respMapa.put("Messaging","No existe esta traducción, lo sentimos");
+                        return new ResponseEntity<>(respMapa,HttpStatus.FOUND);
+                    }
                 }while (respuestaInfo.contains("estimated_time")|| respuestaInfo.contains("error"));
 
 
@@ -114,10 +119,11 @@ public class ControllerTranslation {
         String passwordGuardado=cargaUser.getPassword();
 
         if (userGuardado.equals(username)&&codificadoPassword){
-            String token=jwtUtil.createToken(new UsernamePasswordAuthenticationToken(userGuardado,null,null));
+            String token=jwtUtil.createToken(new UsernamePasswordAuthenticationToken(userGuardado,passwordGuardado,null));
             return new AuthResponse(username,token);
 
         }
+
         return null;
 
 

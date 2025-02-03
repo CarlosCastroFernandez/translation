@@ -23,7 +23,6 @@ public class JWTUtil {
 
 
         Algorithm algoritmo=Algorithm.HMAC256(privateKey);
-
         String username= authentication.getPrincipal().toString();
         String jwtGenerator= JWT.create()
                 .withIssuer(this.userGenerator)
