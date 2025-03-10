@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 @ToString
 public class Traduccion {
     @NotBlank(message = "No puede estar en blanco ytampoco puede ser null")
-    @NotEmpty(message = "No puede estar vacío el campo text")
+    @NotEmpty(message = "No puede estar vacío el campo tex")
     private String text;
 
 }
