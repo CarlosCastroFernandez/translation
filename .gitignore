@@ -3,6 +3,9 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/resources/private_key.pem
+src/main/resources/public_key.pem
+
 
 ### STS ###
 .apt_generated
