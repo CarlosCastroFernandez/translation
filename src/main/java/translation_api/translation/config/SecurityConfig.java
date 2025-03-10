@@ -28,12 +28,15 @@ import translation_api.translation.util.JWTUtil;
 
 @Configuration
 public class SecurityConfig {
-    @Autowired
+
     private JWTUtil jwtUtil;
     @Value("${user.api.create.carlos}")
     private String user;
     @Value("${password.api.create.carlos}")
     private String password;
+    public SecurityConfig(JWTUtil jwtUtil){
+        this.jwtUtil=jwtUtil;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
