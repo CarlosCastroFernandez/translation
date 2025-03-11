@@ -8,6 +8,8 @@ Respuestas rápidas y formato JSON amigable.
 Fácil de integrar en cualquier aplicación o sistema.
 # 📚 Documentación de la API
  Podemos encontrar la documentación de esta api en https://translation-qj5s.onrender.com/swagger-ui/index.html
+ - Si hay que tener en cuenta que en el endpoint https://translation-qj5s.onrender.com/translation/userPermission hay que poner el json de la siguiente manera:
+    {"username":"sushilandia","password":"developerSinFrontera"} para que funcione el token.
 
 # 🌐 Idiomas Soportados
 Español (es)
