@@ -60,39 +60,39 @@ public class ServiceTranslation {
         String respuesta="";
         String respuestaInfo="";
         HttpResponse<String> response=null;
-        if (!texto.getText().isEmpty()||texto.getText()!=null){
-            HashMap<String,String> mapaJson=new HashMap<>();
-            mapaJson.put("inputs", texto.getText());
-            ObjectMapper mapper=new ObjectMapper();
-            try {
-                do {
-                    String formatJson = mapper.writeValueAsString(mapaJson);
-                    System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(formatJson));
-                    response = getRespuesta(idiomaOrigen, idiomaDestino, formatJson);
-                    respuestaInfo = response.body();
-                    respuestaInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respuestaInfo);
-                    System.out.println(respuestaInfo);
-                    if (respuestaInfo.contains("Not Found")){
-                        respMapa.put("Messaging","No existe esta traducción, lo sentimos");
-                        return new ResponseEntity<>(respMapa, HttpStatus.FOUND);
-                    }
-                }while (respuestaInfo.contains("estimated_time")|| respuestaInfo.contains("error"));
-
-
-                if (response.statusCode()==200){
-                    JsonNode nodo=mapper.readTree(response.body());
-                    respuesta=nodo.get(0).get("translation_text").asText();
+        HashMap<String,String> mapaJson=new HashMap<>();
+        mapaJson.put("inputs", texto.getText());
+        ObjectMapper mapper=new ObjectMapper();
+        try {
+            do {
+                String formatJson = mapper.writeValueAsString(mapaJson);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(formatJson));
+                response = getRespuesta(idiomaOrigen, idiomaDestino, formatJson);
+                respuestaInfo = response.body();
+                respuestaInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respuestaInfo);
+                System.out.println(respuestaInfo);
+                if (respuestaInfo.contains("Not Found")){
+                    respMapa.put("Messaging","No existe esta traducción, lo sentimos");
+                    return new ResponseEntity<>(respMapa, HttpStatus.FOUND);
                 }
+            }while (respuestaInfo.contains("estimated_time")|| respuestaInfo.contains("error")|| respuestaInfo.contains("DOCTYPE html"));
 
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+
+            if (response.statusCode()==200){
+                JsonNode nodo=mapper.readTree(response.body());
+                respuesta=nodo.get(0).get("translation_text").asText();
+                System.out.println(respuesta);
             }
 
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+
+
         respMapa.put("traduccion",respuesta);
 
         return new ResponseEntity<>((respuesta.equals("")?new HashMap<>(Map.of("Bad Connection","Mala conexión espera 20 segundos")):respMapa), HttpStatus.OK);

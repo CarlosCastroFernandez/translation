@@ -27,6 +27,9 @@ import translation_api.translation.filter.JWTFilterValidator;
 import translation_api.translation.util.JWTUtil;
 
 @Configuration
+/**
+ * CLase de cofiguración para controlar spring security
+ */
 public class SecurityConfig {
 
     private JWTUtil jwtUtil;
@@ -45,6 +48,7 @@ public class SecurityConfig {
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http->{
                     http.requestMatchers(HttpMethod.POST,"/translation/userPermission").permitAll();
+                    http.requestMatchers("/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**","/webjars/**").permitAll();
                     http.requestMatchers(HttpMethod.POST,"/translation/ScannerTranslation").authenticated();
                     http.anyRequest().denyAll();
 

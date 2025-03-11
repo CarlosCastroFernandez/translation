@@ -16,11 +16,24 @@ import translation_api.translation.util.JWTUtil;
 
 import java.io.IOException;
 
+/**
+ * Clase personalizada de la cadena de filtros de seguridad para gestionar el token
+ */
 public class JWTFilterValidator extends OncePerRequestFilter {
     private JWTUtil jwtUtil;
   public JWTFilterValidator(JWTUtil jwtUtil){
       this.jwtUtil=jwtUtil;
   }
+
+    /**
+     *
+     * @param request cuerpo de la petición
+     * @param response respuesta
+     * @param filterChain o cadena de filtros
+     * @throws ServletException
+     * @throws IOException
+     * en este metodo que heredamos es donde gestionaos la validación de nuestro token en peticiones que tengan como autorización Authorization Bearer
+     */
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

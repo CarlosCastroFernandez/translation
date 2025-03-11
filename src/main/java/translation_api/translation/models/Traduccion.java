@@ -13,9 +13,12 @@ import org.springframework.validation.annotation.Validated;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+/**
+ * Clase que será mapeada en las peticiones para introducir el texto que se quiere traducir
+ */
 public class Traduccion {
     @NotBlank(message = "No puede estar en blanco ytampoco puede ser null")
-    @NotEmpty(message = "No puede estar vacío el campo tex")
+    @NotEmpty(message = "No puede estar vacío el campo text")
     private String text;
 
 }
