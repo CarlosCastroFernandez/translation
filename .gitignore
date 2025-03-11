@@ -5,6 +5,7 @@ HELP.md
 !**/src/test/**/target/
 src/main/resources/private_key.pem
 src/main/resources/public_key.pem
+src/main/java/translation_api/translation/service
 
 
 ### STS ###
