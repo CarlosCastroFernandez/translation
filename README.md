@@ -1,5 +1,34 @@
-# Translate
-#### Servicio API traduccion en el que podemos traducir dos idiomas diferentes a cualquier idioma siguiendo las reglas de idiomaOrigen e idiomaDestino.
-La documentación de estas traducciones las podemos encontrar en los modelos de IA hechos en Hugging Face https://huggingface.co/models?pipeline_tag=translation&sort=trending, siguiendo el modelo Helsinki-NLP/opus-mt.
-En esta documentyación podemos encontrar diferentes traducciones donde traducir un lenguaje con faltas de otrografía no será un problema gracias a la IA que corre detrás de estos modelos.
- 
+# 🌍 API de Traducción Multilenguaje
+##### Un servicio API simple y eficiente que permite traducir texto a múltiples idiomas. Proporciona autenticación por token para mayor seguridad y un endpoint dedicado para realizar las traducciones de manera rápida y precisa.
+
+### 🚀 Características
+Traducción automática entre múltiples idiomas.
+Sistema de autenticación mediante token.
+Respuestas rápidas y formato JSON amigable.
+Fácil de integrar en cualquier aplicación o sistema.
+### 📚 Documentación de la API
+ Podemos encontrar la documentación de esta api en https://translation-qj5s.onrender.com/swagger-ui/index.html
+
+# 🌐 Idiomas Soportados
+Español (es)
+Inglés (en)
+Francés (fr)
+Alemán (de)
+Italiano (it)
+Portugués (pt)
+Chino (zh)
+Japonés (ja)
+... y muchos más.
+
+# 🛡️ Seguridad
+Autenticación mediante tokens JWT para proteger el acceso al servicio.
+Tokens válidos por un tiempo limitado para mayor seguridad.
+# ⚙️ Tecnologías Utilizadas
+Backend: java (ApiRest / Spring Boot / Spring Security / Spring Validations / Swagger )
+Autenticación: JWT
+Traducción: Sistema de modelos automáticos propios de traducción multilenguaje.
+# 📦 Utilización.
+Podemos utilizar esta api en el siguiente dominio https://translation-qj5s.onrender.com teniendo en cuenta de que este domino es de prueba y pre-producción, para mayor exactitúd de su uso visita la documentación de la API
+
+
+
