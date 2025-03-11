@@ -1,12 +1,12 @@
 # 🌍 API de Traducción Multilenguaje
 ##### Un servicio API simple y eficiente que permite traducir texto a múltiples idiomas. Proporciona autenticación por token para mayor seguridad y un endpoint dedicado para realizar las traducciones de manera rápida y precisa.
 
-### 🚀 Características
+# 🚀 Características
 Traducción automática entre múltiples idiomas.
 Sistema de autenticación mediante token.
 Respuestas rápidas y formato JSON amigable.
 Fácil de integrar en cualquier aplicación o sistema.
-### 📚 Documentación de la API
+# 📚 Documentación de la API
  Podemos encontrar la documentación de esta api en https://translation-qj5s.onrender.com/swagger-ui/index.html
 
 # 🌐 Idiomas Soportados
